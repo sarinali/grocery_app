@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:grocery_app/viewlist.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,6 +15,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
+      routes: {
+        "/viewlist": (context) => ViewList(),
+      },
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -61,6 +65,31 @@ class _MyHomePageState extends State<MyHomePage> {
       // called again, and so nothing would appear to happen.
       _counter++;
     });
+  }
+
+  Route _createRoute() {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => const ViewList(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        // const begin = Offset(0.0, 1.0);
+        // const end = Offset.zero;
+        // final tween = Tween(begin: begin, end: end);
+        // final offsetAnimation = animation.drive(tween);
+        const begin = Offset(1.0, 0.0);
+        const end = Offset.zero;
+        const curve = Curves.easeOut;
+
+        var tween =
+            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+        // var curve = Curves.ease;
+        // var curveTween = CurveTween(curve: curve);
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
+      },
+    );
   }
 
   @override
@@ -126,7 +155,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     backgroundColor:
                         MaterialStateProperty.all<Color>(Colors.purple),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(_createRoute());
+                    // Navigator.pushNamed(context, "/viewlist");
+                  },
                   child: Text(
                     "View List",
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
