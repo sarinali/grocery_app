@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:grocery_app/add_food.dart';
-import 'package:grocery_app/viewlist.dart';
 
+import 'demo.dart';
+// import 'package:grocery_app/add_food.dart';
+// import 'package:grocery_app/viewlist.dart';
+
+String trollName = "Troll is ugly and fat";
 void main() {
   runApp(const MyApp());
 }
@@ -17,8 +20,8 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       routes: {
-        "/viewlist": (context) => ViewList(),
-        "/addfood": (context) => AddFood()
+        // "/viewlist": (context) => ViewList(),
+        "/demo": (context) => Demo()
       },
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -28,21 +31,21 @@ class MyApp extends StatelessWidget {
   }
 }
 
-Route _createRoute() {
-  return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) => const ViewList(),
-      transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        const begin = Offset(0.0, 1.0);
-        const end = Offset.zero;
-        const curve = Curves.easeOut;
+// Route _createRoute() {
+//   return PageRouteBuilder(
+//       pageBuilder: (context, animation, secondaryAnimation) => const ViewList(),
+//       transitionsBuilder: (context, animation, secondaryAnimation, child) {
+//         const begin = Offset(0.0, 1.0);
+//         const end = Offset.zero;
+//         const curve = Curves.easeOut;
 
-        var tween = Tween(begin: begin, end: end);
-        return SlideTransition(
-          position: animation.drive(tween),
-          child: child,
-        );
-      });
-}
+//         var tween = Tween(begin: begin, end: end);
+//         return SlideTransition(
+//           position: animation.drive(tween),
+//           child: child,
+//         );
+//       });
+// }
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -116,7 +119,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   onPressed: () {
                     // Navigator.pushNamed(context, "/viewlist");
-                    Navigator.of(context).push(_createRoute());
+                    // Navigator.of(context).push(_createRoute());
                   },
                   child: Text(
                     "View List",
@@ -154,7 +157,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         MaterialStateProperty.all<Color>(Colors.purple),
                   ),
                   onPressed: () {
-                    Navigator.pushNamed(context, "/addfood");
+                    Navigator.pushNamed(context, "/demo");
                   },
                   child: Text(
                     "Add Food",
@@ -186,5 +189,6 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       // This trailing comma makes auto-formatting nicer for build methods.
     );
+    
   }
 }
