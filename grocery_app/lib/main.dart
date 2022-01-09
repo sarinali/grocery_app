@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:grocery_app/futurebuilder.dart';
 
 import 'demo.dart';
 // import 'package:grocery_app/add_food.dart';
@@ -21,7 +22,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
         // "/viewlist": (context) => ViewList(),
-        "/demo": (context) => Demo()
+        "/demo": (context) => Demo(),
+        "/future": (context) => FutureBuilderDemo()
       },
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -118,8 +120,14 @@ class _MyHomePageState extends State<MyHomePage> {
                         MaterialStateProperty.all<Color>(Colors.purple),
                   ),
                   onPressed: () {
-                    // Navigator.pushNamed(context, "/viewlist");
+                    // Navigator.of(context).pushNamed('/future');
                     // Navigator.of(context).push(_createRoute());
+                    Navigator.push(
+                      context,
+                       MaterialPageRoute(
+                        builder: (context) => FutureBuilderDemo(),
+                      ),
+                    );
                   },
                   child: Text(
                     "View List",
@@ -189,6 +197,5 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       // This trailing comma makes auto-formatting nicer for build methods.
     );
-    
   }
 }
