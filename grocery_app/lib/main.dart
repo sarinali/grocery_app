@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:grocery_app/futurebuilder.dart';
+import 'package:grocery_app/streambuilder.dart';
 
 import 'demo.dart';
+import 'futurebuilder.dart';
 // import 'package:grocery_app/add_food.dart';
 // import 'package:grocery_app/viewlist.dart';
 
@@ -23,7 +24,8 @@ class MyApp extends StatelessWidget {
       routes: {
         // "/viewlist": (context) => ViewList(),
         "/demo": (context) => Demo(),
-        "/future": (context) => FutureBuilderDemo()
+        "/future": (context) => FutureBuilderDemo(),
+        "/stream": (context) => StreamBuilderExample()
       },
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -120,14 +122,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         MaterialStateProperty.all<Color>(Colors.purple),
                   ),
                   onPressed: () {
-                    // Navigator.of(context).pushNamed('/future');
-                    // Navigator.of(context).push(_createRoute());
-                    Navigator.push(
-                      context,
-                       MaterialPageRoute(
-                        builder: (context) => FutureBuilderDemo(),
-                      ),
-                    );
+                    Navigator.pushNamed(context, "/future");
                   },
                   child: Text(
                     "View List",
@@ -146,7 +141,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     backgroundColor:
                         MaterialStateProperty.all<Color>(Colors.purple),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, "/stream");
+                  },
                   child: Text(
                     "Browse Food",
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 Future<List<String>> getData() async {
   await Future.delayed(const Duration(seconds: 2));
-  return ["Apple", "Banana", "Orange"];
+  return ["Apple", "Banana", "Kiwi", "Orange", "Edxfruit", "Watermelon"];
 }
 
 class FutureBuilderDemo extends StatefulWidget {
@@ -24,7 +24,6 @@ class _FutureBuilderDemoState extends State<FutureBuilderDemo> {
         child: FutureBuilder(
             future: getData(),
             builder: (context, AsyncSnapshot snapshot) {
-              // option 1 ternary operator
               return snapshot.connectionState == ConnectionState.waiting
                   ? CircularProgressIndicator()
                   : ListView.builder(
