@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:grocery_app/streambuilder.dart';
+// import 'package:grocery_app/streambuilder.dart';
+import 'package:grocery_app/streamexample.dart';
 
 import 'demo.dart';
 import 'futurebuilder.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         // "/viewlist": (context) => ViewList(),
         "/demo": (context) => Demo(),
         "/future": (context) => FutureBuilderDemo(),
-        "/stream": (context) => StreamBuilderExample()
+        "/stream": (context) => StreamExampleWidget()
       },
       theme: ThemeData(
         primarySwatch: Colors.blue,
