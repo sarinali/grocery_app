@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:grocery_app/filehandling.dart';
+import 'package:grocery_app/refreshdemo.dart';
 // import 'package:grocery_app/streambuilder.dart';
 import 'package:grocery_app/streamexample.dart';
 
@@ -10,6 +12,7 @@ import 'futurebuilder.dart';
 
 String trollName = "Troll is ugly and fat";
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -26,7 +29,8 @@ class MyApp extends StatelessWidget {
         // "/viewlist": (context) => ViewList(),
         "/demo": (context) => Demo(),
         "/future": (context) => FutureBuilderDemo(),
-        "/stream": (context) => StreamExampleWidget()
+        "/stream": (context) => StreamExampleWidget(),
+        "/file": (context) => FileHandling(),
       },
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -182,7 +186,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     backgroundColor:
                         MaterialStateProperty.all<Color>(Colors.purple),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, "/file");
+                  },
                   child: Text(
                     "Settings",
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
